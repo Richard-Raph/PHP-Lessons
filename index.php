@@ -330,37 +330,73 @@ arsort()
 
 // User Defined Function
 
-echo '<br>';
-function add($a, $b) {
-    $result = $a + $b;
-    echo $result;
-};
-add(9, 6);
-echo '<br>';
+// echo '<br>';
+// function add($a, $b) {
+//     $result = $a + $b;
+//     echo $result;
+// };
+// add(9, 6);
+// echo '<br>';
 
-function cube($c) {
-    $result = $c ** 3;
-    echo $result;
-};
-cube(4);
-echo '<br>';
+// function cube($c) {
+//     $result = $c ** 3;
+//     echo $result;
+// };
+// cube(4);
+// echo '<br>';
 
-function operate($d, $op, $e) {
-    if ($op == '-') {
-        $result = $d - $e;
-    } else if ($op == '+') {
-        $result = $d + $e;
-    } else if ($op == '/') {
-        $result = $d / $e;
-    } else if ($op == '*') {
-        $result = $d * $e;
-    } else {
-        echo "Invalid operator";
-    };
-    echo $result;
-};
-operate(5, '*', 2);
-echo '<br>';
+// function operate($d, $op, $e) {
+//     if ($op == '-') {
+//         $result = $d - $e;
+//     } else if ($op == '+') {
+//         $result = $d + $e;
+//     } else if ($op == '/') {
+//         $result = $d / $e;
+//     } else if ($op == '*') {
+//         $result = $d * $e;
+//     } else {
+//         echo "Invalid operator";
+//     };
+//     echo $result;
+// };
+// operate(5, '*', 2);
+// echo '<br>';
+
+// function amt_calc($amt) {
+//     if ($amt > 10000) {
+//         $curr_amt = $amt - 1000;
+//         echo 'Current amount: #' . $curr_amt;
+//     } else if ($amt >= 5000 && $amt <= 10000) {
+//         $curr_amt = $amt - 500;
+//         echo 'Current amount: #' . $curr_amt;
+//     } else {
+//         echo 'Current amount: #' . $amt;
+//     }
+// };
+
+// amt_calc(1000);
+
+/* PHP Super Globals 
+
+1) GLOBALS: This is one of the super global used to access global variables from another in the PHP script. 
+2) POST: A global variable used to collect data from the HTML form after submitting.
+3) GET: A global variable 
+4)ISSET:
+5) :
+
+*/
+
+// GLOBALS
+
+// $x = 100;
+// $y = 200;
+
+// function add() {
+//     $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y'];
+// }
+
+// add();
+// echo $z;
 
 
 ?>
@@ -704,3 +740,79 @@ echo '<br>';
 </body>
 
 </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Calculator</title>
+</head>
+
+<body>
+    <h1>Calculator Program</h1>
+
+    <!-- GET and POST -->
+    <form action="index.php" method="GET">
+        <div>
+            <input type="number" placeholder="First Number" name="num1">
+        </div>
+        <br>
+
+        <div>
+            <input type="text" placeholder="Operator" name="op">
+        </div>
+        <br>
+
+        <div>
+            <input type="number" placeholder="Second Number" name="num2">
+        </div>
+        <br>
+
+        <div>
+            <input type="submit" value="Calculate" name="calc">
+        </div>
+    </form>
+
+    <?php
+        $num1 = $op = $num2 = '';
+
+        if (isset($_GET['calc'])) {
+            $num1 = $_GET['num1'];
+            $op = $_GET['op'];
+            $num2 = $_GET['num2'];
+
+            if (empty($num1) || empty($op) || empty($num2)) {
+                echo 'All fields are required!';
+            } else {
+                switch ($op) {
+                    case '+':
+                        $result = $num1 + $num2;
+                        echo $result;
+                        break;
+                    case '-':
+                        $result = $num1 - $num2;
+                        echo $result;
+                        break;
+                    case '*':
+                        $result = $num1 * $num2;
+                        echo $result;
+                        break;
+                    case '/':
+                        if ($num2 == 0) {
+                            echo 'Cannot divide by zero';
+                        } else {
+                            $result = $num1 / $num2;
+                            echo $result;
+                        }
+                        break;
+                    default:
+                        echo 'Invalid Operator';
+                }
+            }
+        }
+    ?>
+</body>
+
+</html>
