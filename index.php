@@ -380,9 +380,11 @@ arsort()
 
 1) GLOBALS: This is one of the super global used to access global variables from another in the PHP script. 
 2) POST: A global variable used to collect data from the HTML form after submitting.
-3) GET: A global variable 
-4)ISSET:
-5) :
+3) GET: A global variable that shows you the form data. It is also used to get data after submitting it.
+4) SERVER: This is one of the super global used to access server information. It stores information about the header, path, script and locations.
+5) COOKIES: This is a small file that the web server stores on the client computer. They are used to track information such as username.
+6) SESSION: This is used to sore data o the server rather than the client computer. Session information gets destroyed every time the user closes the browser.
+7) FILES: This is a two-dimensional associative array of items which are uploaded via the post method.
 
 */
 
